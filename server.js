@@ -48,7 +48,7 @@ router.get('/api/services/:id', async (ctx, next) => {
     return fortune(ctx, body);
 });
 router.post('/api/services', async (ctx, next) => {
-    const id = ctx.request.body.id;
+    /*const id = ctx.request.body.id;
     if (id !== 0) {
         const index = services.findIndex(o => o.id === id);
         if (index === -1) {
@@ -57,9 +57,10 @@ router.post('/api/services', async (ctx, next) => {
         }
         services[index] = ctx.request.body;
         return fortune(ctx, null, 204);
-    }
-    
-    services.push({ ...ctx.request.body, id: nextId++ });
+    }*/
+    const id = nextId++;
+    services.push({ ...ctx.request.body, id });
+    // services.push({ ...ctx.request.body, id: nextId++ });
     const status = 204;
     return fortune(ctx, null, status);
 });
